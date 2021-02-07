@@ -1,0 +1,28 @@
+{
+  "suggest.noselect": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "javascript",
+    "javascriptreact",
+    "c",
+    "json",
+    "css",
+    "markdown",
+    "java"
+  ],
+
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.jediEnabled": false,
+
+  "javascript.suggest.autoImports": true,
+
+  "coc.preferences.hoverTarget": "float",
+
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
+
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "clangd.path": "/home/dandan/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
+}
