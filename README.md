@@ -30,6 +30,23 @@ To run this project, fork the repository and clone it into your own machine:
 $ git clone <repo-url>
 ```
 
+## Software list
+
+	* Brave
+	* Blender
+	* VS-Code
+	* htop
+	* OnlyOffice
+	* Mailspring
+	* ranger
+	* Unity
+	* Node + Npm
+	* Yarn
+	* Postman
+	* Zoom
+	* Android Studio
+	* Figma
+
 ### If you have any suggestions, please let me know!
 
 #### Happy coding ;)

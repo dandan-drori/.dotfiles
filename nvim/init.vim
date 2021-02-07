@@ -18,7 +18,6 @@ source $HOME/.config/nvim/plugin-configurations/syntastic.vim
 source $HOME/.config/nvim/plugin-configurations/vimspector.vim
 source $HOME/.config/nvim/plugin-configurations/start-screen.vim
 source $HOME/.config/nvim/plugin-configurations/ranger.vim
-source $HOME/.config/nvim/plugin-configurations/which-key.vim
 source $HOME/.config/nvim/plugin-configurations/codi.vim
 source $HOME/.config/nvim/plugin-configurations/vim-wiki.vim
 source $HOME/.config/nvim/plugin-configurations/instant-md.vim
