@@ -25,4 +25,3 @@ source $HOME/.config/nvim/plugin-configurations/instant-md.vim
 " make sure background stays transparent after initial nvim open
 hi! Normal guibg=NONE ctermbg=NONE
 hi! EndOfBuffer guibg=NONE ctermbg=NONE
-

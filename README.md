@@ -66,6 +66,7 @@ $ git clone <repo-url>
 - s - delete character under cursor and enter insert mode
 - S - delete line under cursor and enter insert mode
 - f<char> - jump to next occurrence of <char> in current line
+- F<char> - jump to previous occurence of <char> in current line
 - /<text> - find all occurrences of <text> in current file
 - r<char> - replace character under cursor with <char>
 - gt - go to next tab 
@@ -78,9 +79,10 @@ $ git clone <repo-url>
 - diw - delete inner (under cursor) word
 - ciw - delete inner (under corsor) word and enter insert mode
 - dt<char> - delete text till <char> from cursor position
-- ds" - delete surrounding quotes
-- csttp - replace surrounding html tag with p tag
-- ysiw" - add surrounding inner word quotes (add surrounding quotes)
+- ds" - delete surrounding quotes (requires surround.vim plugin)
+- csttp - replace surrounding html tag with p tag (requires surround.vim plugin)
+- ysiw" - add surrounding inner word quotes (add surrounding quotes) (requires surround.vim plugin)
+- ys3jt - add surrounding html tag to 3 lines from cursor position (requires surround.vim plugin)
 - dst - delete surrounding html tag
 
 ### Commands 

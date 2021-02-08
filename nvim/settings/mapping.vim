@@ -16,14 +16,10 @@ inoremap {<CR> {<CR><CR>}<ESC>ki<TAB>
 nnoremap <C-_> :Commentary<CR>
 " copy line down
 nnoremap <A-S-down> yyp
-" open terminal in horizontal view with correct resizing
-nnoremap <leader>c :vertical split<CR>:term<CR><C-w>L<C-w>w :vertical resize +30<CR>
-" move from terminal window to code window
+" enter normal mode in terminal window
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
 endif
-" add surrounding quotes
-nnoremap <leader>s" ciw""<ESC>P
 
 " define functions for swapping lines
 function! s:swap_lines(n1, n2)
@@ -78,7 +74,7 @@ nnoremap <M-l> :vertical resize +2<CR>
 " alternative way to save
 nnoremap <C-s> :w<CR>
 " alternative way to quit
-nnoremap <C-Q> :wq<CR>
+nnoremap <C-Q> :wq!<CR>
 " alternative way to go to normal mode
 nnoremap <C-c> <ESC>
 
