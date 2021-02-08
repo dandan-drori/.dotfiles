@@ -83,7 +83,7 @@ $ git clone <repo-url>
 - csttp - replace surrounding html tag with p tag (requires surround.vim plugin)
 - ysiw" - add surrounding inner word quotes (add surrounding quotes) (requires surround.vim plugin)
 - ys3jt - add surrounding html tag to 3 lines from cursor position (requires surround.vim plugin)
-- dst - delete surrounding html tag
+- dst - delete surrounding html tag (requires surround.vim plugin)
 
 ### Commands 
 
