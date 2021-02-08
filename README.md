@@ -65,25 +65,24 @@ $ git clone <repo-url>
 - I - move to beginning of the line and enter insert mode
 - s - delete character under cursor and enter insert mode
 - S - delete line under cursor and enter insert mode
-- f<char> - jump to next occurrence of <char> in current line
-- F<char> - jump to previous occurence of <char> in current line
-- /<text> - search current buffer for <text> going forward
-- ?<text> - search current buffer for <text> going backward
-- r<char> - replace character under cursor with <char>
+- f\<char\> - jump to next occurrence of \<char\> in current line
+- F\<char\> - jump to previous occurence of \<char\> in current line
+- /\<text\> - search current buffer for \<text\> going forward
+- ?\<text\> - search current buffer for \<text\> going backward
+- r\<char\> - replace character under cursor with \<char\>
 - gt - go to next tab 
 - gT - go to previous tab
 - ctrl+w+w - switch between panes in split screen
 - gf - go to file in path under cursor
 - ~ - switch case of character under cursor
 - \>\> indent current line
-=======
 - \>\> indent current line
 
 ### Advanced Shortcuts
 
 - diw - delete inner (under cursor) word
 - ciw - delete inner (under corsor) word and enter insert mode
-- dt<char> - delete text till <char> from cursor position
+- dt\<char\> - delete text till \<char\> from cursor position
 - ds" - delete surrounding quotes (requires surround.vim plugin)
 - csttp - replace surrounding html tag with p tag (requires surround.vim plugin)
 - ysiw" - add surrounding inner word quotes (add surrounding quotes) (requires surround.vim plugin)
@@ -92,24 +91,24 @@ $ git clone <repo-url>
 - gUU - make current line uppercase
 - guu - make current line lowercase
 - Macros are awesome:
-	- q\<char\> - start recording a macro in the <char> register
-	- q\<char\> - start recording a macro in the <char> register
-	- @\<char\> - execute a macro in the <char> register
+	- q\<char\> - start recording a macro in the \<char\> register
+	- q\<char\> - start recording a macro in the \<char\> register
+	- @\<char\> - execute a macro in the \<char\> register
 	- Pro tip: use general commands with macros like ciw and not cw to avoid problems
 
 ### Commands 
 
 - . - repeat last noraml mode command
-- :<linenumber> - go to line <linenumber>
+- :\<linenumber\> - go to line \<linenumber\>
 - :split/vsplit - open new split window in horizontal/vertical split
 - :resize/vertical resize +2 - resize windows
-- :%s/<old>/<new>/gc - find all occurrences of <old>, replace with <new> and ask for confirmation
-- :g/<text>/t2 - copy all lines with <text> and paste them in line 2 of the file
-- :o <filename> - open a new file in current buffer
-- :tabedit <filename> - open new file in a new tab
-- :mksession <filename>.vim - save current buffers state to current directory
-- $nvim -S <filename> - open a session in nvim
-- $ nvim -p <filename> <anotherfile> - open multiple files in different tabs
+- :%s/\<old\>/\<new\>/gc - find all occurrences of \<old\>, replace with \<new\> and ask for confirmation
+- :g/\<text\>/t2 - copy all lines with \<text\> and paste them in line 2 of the file
+- :o \<filename\> - open a new file in current buffer
+- :tabedit \<filename\> - open new file in a new tab
+- :mksession \<filename\>.vim - save current buffers state to current directory
+- $nvim -S \<filename\> - open a session in nvim
+- $ nvim -p \<filename\> \<anotherfile\> - open multiple files in different tabs
 
 ### If you have any suggestions, please let me know!
 
