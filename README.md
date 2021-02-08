@@ -75,11 +75,9 @@ $ git clone <repo-url>
 - ctrl+w+w - switch between panes in split screen
 - gf - go to file in path under cursor
 - ~ - switch case of character under cursor
-<<<<<<< HEAD
-- \>> indent current line
+- \>\> indent current line
 =======
-- >> indent current line
->>>>>>> 2309ed2a354b791904342b160eafe935e52a493b
+- \>\> indent current line
 
 ### Advanced Shortcuts
 
@@ -94,12 +92,9 @@ $ git clone <repo-url>
 - gUU - make current line uppercase
 - guu - make current line lowercase
 - Macros are awesome:
-<<<<<<< HEAD
-	- q\<char> - start recording a macro in the <char> register
-=======
-	- q<char> - start recording a macro in the <char> register
->>>>>>> 2309ed2a354b791904342b160eafe935e52a493b
-	- @<char> - execute a macro in the <char> register
+	- q\<char\> - start recording a macro in the <char> register
+	- q\<char\> - start recording a macro in the <char> register
+	- @\<char\> - execute a macro in the <char> register
 	- Pro tip: use general commands with macros like ciw and not cw to avoid problems
 
 ### Commands 
