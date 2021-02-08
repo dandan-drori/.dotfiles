@@ -67,12 +67,15 @@ $ git clone <repo-url>
 - S - delete line under cursor and enter insert mode
 - f<char> - jump to next occurrence of <char> in current line
 - F<char> - jump to previous occurence of <char> in current line
-- /<text> - find all occurrences of <text> in current file
+- /<text> - search current buffer for <text> going forward
+- ?<text> - search current buffer for <text> going backward
 - r<char> - replace character under cursor with <char>
 - gt - go to next tab 
 - gT - go to previous tab
 - ctrl+w+w - switch between panes in split screen
 - gf - go to file in path under cursor
+- ~ - switch case of character under cursor
+- \>> indent current line
 
 ### Advanced Shortcuts
 
@@ -84,9 +87,17 @@ $ git clone <repo-url>
 - ysiw" - add surrounding inner word quotes (add surrounding quotes) (requires surround.vim plugin)
 - ys3jt - add surrounding html tag to 3 lines from cursor position (requires surround.vim plugin)
 - dst - delete surrounding html tag (requires surround.vim plugin)
+- gUU - make current line uppercase
+- guu - make current line lowercase
+- Macros are awesome:
+	- q\<char> - start recording a macro in the <char> register
+	- @<char> - execute a macro in the <char> register
+	- Pro tip: use general commands with macros like ciw and not cw to avoid problems
 
 ### Commands 
 
+- . - repeat last noraml mode command
+- :<linenumber> - go to line <linenumber>
 - :split/vsplit - open new split window in horizontal/vertical split
 - :resize/vertical resize +2 - resize windows
 - :%s/<old>/<new>/gc - find all occurrences of <old>, replace with <new> and ask for confirmation
