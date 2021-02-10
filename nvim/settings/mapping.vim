@@ -92,5 +92,9 @@ nnoremap <leader>p :InstantMarkdownPreview<CR>
 " close markdown instant preview
 nnoremap <leader>ps :InstantMarkdownStop<CR>
 
-" map convertion from markdown to pdf using pandoc
-map <leader>G :w! \| !~/bin/md2pdf.sh <c-r>%<CR><CR>
+" convertion from markdown to pdf using pandoc
+map <leader>C :w! \| !~/bin/md2pdf.py <c-r>%<CR><CR>
+" open the correct pdf for the currently open md file
+map <leader>O :!~/bin/opdf.py <c-r>%<CR>
+" delete the correct pdf for the currently open md file 
+map <leader>D :!~/bin/mdDelete.py <c-r>%<CR>

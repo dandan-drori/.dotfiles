@@ -1,3 +1,4 @@
+" add nvim config files to PATH
 set runtimepath^=~/.config/nvim/runtime runtimepath+=~/.config/nvim/runtime/after
 let &packpath = &runtimepath
 

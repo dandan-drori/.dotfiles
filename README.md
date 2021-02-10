@@ -75,8 +75,8 @@ $ git clone <repo-url>
 - ctrl+w+w - switch between panes in split screen
 - gf - go to file in path under cursor
 - ~ - switch case of character under cursor
-- \>\> indent current line
-- \>\> indent current line
+- \>\> - indent current line
+- \>\> - indent current line
 
 ### Advanced Shortcuts
 

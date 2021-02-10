@@ -23,6 +23,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi-cursor like vs-code 
 Plug 'vimwiki/vimwiki' " personal documentaion for note-taking
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'} " preview markdown files in browser
 Plug 'tpope/vim-surround' " add/delete/change surrounding delimiters
+Plug 'michaeljsmith/vim-indent-object' " select text based on indentation
 call plug#end()
 
 

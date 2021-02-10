@@ -39,5 +39,7 @@ alias compile='gcc *.c -std=c99'
 
 # scripts
 alias createProject='projectCreate.sh' 
-alias md2pdf='md2pdf.sh'
 alias createMd='mdCreate.sh'
+alias deleteMd='mdDelete.py'
+alias md2pdf='md2pdf.py'
+alias opdf='opdf.py'
