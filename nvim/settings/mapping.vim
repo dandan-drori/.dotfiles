@@ -85,6 +85,22 @@ xnoremap J :move '>+2<CR>gv-gv
 " toggle float-term
 nnoremap <c-t> :FloatermToggle<CR>
 
+" git integration with git-fugitive
+nmap <leader>gs :G<CR>
+nmap <leader>gp :Gpush<CR>
+nmap <leader>gh :diffget //2<CR>
+nmap <leader>gl :diffget //3<CR>
+
+" project wide renaming with coc
+nnoremap <leader>Prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+
+" local buffer renaming with coc
+nmap <leader>R <Plug>(coc-rename)
+
+" format text with special style
+nmap <leader>B :.!toilet -w 200 -f term -F border<CR>
+nmap <leader>H :.!toilet -w 200 -f standard<CR>
+
 " MARKDOWN
 
 " open markdown instant preview

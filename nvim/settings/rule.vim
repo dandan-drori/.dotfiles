@@ -15,8 +15,6 @@ set tabstop=4
 set autoindent
 " let vim try to indent for you
 set autoindent
-" use dark color theme
-set background=dark
 " highlight search matches
 set nohlsearch
 " highlight while searching
@@ -33,12 +31,14 @@ set noswapfile
 set nobackup
 " change cursor to square from line
 set guicursor=
-" enable parenthesis for all filetypes
+" let vim use all characters
+set encoding=utf-8
+" enable parentheses for all filetypes
 let g:rainbow_active = 1
 " set highlight for ripgrep
 let g:rg_highlight = 1
 " set maximum lines of file to include colorizer
 let g:colorizer_maxlines = 1000
 " set transparent background
-autocmd BufWinEnter * hi Normal guibg=NONE ctermbg=NONE
-autocmd BufWinEnter * hi EndOfBuffer guibg=NONE ctermbg=NONE
+" autocmd BufWinEnter * hi Normal guibg=NONE ctermbg=NONE
+" autocmd BufWinEnter * hi EndOfBuffer guibg=NONE ctermbg=NONE

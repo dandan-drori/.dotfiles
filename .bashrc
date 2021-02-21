@@ -179,3 +179,6 @@ export PATH=$PATH":$HOME/bin"
 
 # make cd automatic without adding "cd"
 shopt -s autocd
+
+# add chromedriver path to PATH
+export PATH=$PATH":/usr/bin/google-chrome"

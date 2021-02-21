@@ -24,6 +24,5 @@ Plug 'vimwiki/vimwiki' " personal documentaion for note-taking
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'} " preview markdown files in browser
 Plug 'tpope/vim-surround' " add/delete/change surrounding delimiters
 Plug 'michaeljsmith/vim-indent-object' " select text based on indentation
+Plug 'psliwka/vim-smoothie' " smooth scrolling with <c-d> and <c-u>
 call plug#end()
-
-
