@@ -6,7 +6,7 @@ fun GotoWindow(id)
 endfun
 
 " set mappings to human even tho they are also mapped to different keys bellow
-let g:vimspector_enable_mappings = 'HUMAN'
+" let g:vimspector_enable_mappings = 'HUMAN'
 " add vimspector when vim is opened
 " packadd! vimspector
 " launch vimspector

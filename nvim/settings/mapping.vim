@@ -3,15 +3,6 @@ let mapleader=" "
 
 " map :FZF (Fuzzy Finder) to Ctrl + P
 nmap <C-P> :FZF<CR>
-" add matching closing punchuation  when the first one is added:
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ` ``<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-" add closing } 2 lines bellow like a javascript function
-inoremap {<CR> {<CR><CR>}<ESC>ki<TAB>
 " toggle comment a line
 nnoremap <C-_> :Commentary<CR>
 " copy line down
@@ -53,11 +44,22 @@ endfunction
 nmap <silent> <A-up> :call <SID>swap_up()<CR>
 nmap <silent> <A-down> :call <SID>swap_down()<CR>
 
+" move groups of text vertically
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+2<CR>gv-gv
+
 " disable arrow keys
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
+" nnoremap <Up> <Nop>
+" nnoremap <Down> <Nop>
+" nnoremap <Left> <Nop>
+" nnoremap <Right> <Nop>
+" inoremap <Up> <Nop>
+" inoremap <Down> <Nop>
+" inoremap <Left> <Nop>
+" inoremap <Right> <Nop>
+
+" disable esc in insert mode
+inoremap <Esc> <Nop>
 
 " better window navigation
 nnoremap <C-h> <C-w>h
@@ -76,41 +78,70 @@ nnoremap <C-s> :w<CR>
 " alternative way to quit
 nnoremap <C-Q> :wq!<CR>
 " alternative way to go to normal mode
-nnoremap <C-c> <ESC>
-
-" move groups of text vertically
-xnoremap K :move '<-2<CR>gv-gv
-xnoremap J :move '>+2<CR>gv-gv
+nnoremap <C-c> <Esc>
+inoremap kj <Esc>
 
 " toggle float-term
 nnoremap <c-t> :FloatermToggle<CR>
 
 " git integration with git-fugitive
+" in the git status buffer, use <s> to stage a file,
+" <u> to unstage a file and <cc> to commit all changes
+" use <dv> to view diff of merge in vertical split
 nmap <leader>gs :G<CR>
-nmap <leader>gp :Gpush<CR>
+nmap <leader>gp :Git push<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gl :diffget //3<CR>
 
-" project wide renaming with coc
-nnoremap <leader>Prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
-
 " local buffer renaming with coc
 nmap <leader>R <Plug>(coc-rename)
+
+" insert space
+nnoremap <leader><space> i <C-c>
 
 " format text with special style
 nmap <leader>B :.!toilet -w 200 -f term -F border<CR>
 nmap <leader>H :.!toilet -w 200 -f standard<CR>
 
-" MARKDOWN
-
-" open markdown instant preview
-nnoremap <leader>p :InstantMarkdownPreview<CR>
-" close markdown instant preview
-nnoremap <leader>ps :InstantMarkdownStop<CR>
+" MARKDOWN + PDF
 
 " convertion from markdown to pdf using pandoc
 map <leader>C :w! \| !~/bin/md2pdf.py <c-r>%<CR><CR>
 " open the correct pdf for the currently open md file
 map <leader>O :!~/bin/opdf.py <c-r>%<CR>
-" delete the correct pdf for the currently open md file 
+" delete the correct pdf for the currently open md file
 map <leader>D :!~/bin/mdDelete.py <c-r>%<CR>
+" open buffer for note taking
+map <leader>N :!~/bin/noteTaking.sh \| nvim /home/dandan/.notes/src/note-<C-R>=expand(@a).'.md'<CR>
+
+" navigating buffers like tabs with airline's tabline extension
+nnoremap <leader>l :bnext<CR>
+nnoremap <leader>h :bprevious<CR>
+
+" CUSTOM COMMANDS
+
+" reload init.vim
+command! Reload execute "source ~/.config/nvim/init.vim"
+
+" reload syntax highlighting
+nnoremap <F12> :syn off \| syn on<CR>
+
+" execute bash command under cursor
+nnoremap <leader>e !!sh<CR>
+
+" copy to system clipboard
+vnoremap <leader>c "*Y :let @+=@*<CR>
+
+" paste from system clipboard
+map <leader>p "+p
+
+" FILETYPE SPECIFIC MAPPINGS
+
+" add all function declarations to the top part of the file (in .c)
+" regex functinallity - find any line that starts with anything but space, then a space,
+" anything, openening parenthesis, anything, closing parenthesis, space, and
+" ends with opening curly braces. then, substitute the space and opening
+" curly braces at the end of the line with a semi-colon.
+autocmd FileType c nnoremap <leader>fd :g/^\S\+\s.*\(.*\)\s{$/t0 \| s/\s{$/;<CR><CR>
+" create a styled tag out of the tag under cursor
+autocmd FileType javascript map <leader>S :norm Goconst <c-r><c-w> = styled.div`<CR>a<CR><Tab>

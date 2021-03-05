@@ -9,9 +9,8 @@ let g:startify_lists = [
 let g:startify_bookmarks = [
             \ { 'i': '~/.config/nvim/init.vim' },
             \ { 'p': '~/Projects' },
-            \ { 'h': '~/IntroToComputerScience/FirstSemester/Homework' },
+            \ { 'h': '~/IntroToComputerScience/SecondSemester/Homework' },
             \ { 'c': '~/.config/nvim'},
-            \ { 'm': '~/vimwiki/index.md'},
             \ ]
 
 let g:startify_custom_header = [

@@ -19,11 +19,11 @@ source $HOME/.config/nvim/plugin-configurations/syntastic.vim
 source $HOME/.config/nvim/plugin-configurations/vimspector.vim
 source $HOME/.config/nvim/plugin-configurations/start-screen.vim
 source $HOME/.config/nvim/plugin-configurations/ranger.vim
-source $HOME/.config/nvim/plugin-configurations/codi.vim
 source $HOME/.config/nvim/plugin-configurations/vim-wiki.vim
-source $HOME/.config/nvim/plugin-configurations/instant-md.vim
+source $HOME/.config/nvim/plugin-configurations/which-key.vim
+source $HOME/.config/nvim/plugin-configurations/vim-repeat.vim
+source $HOME/.config/nvim/plugin-configurations/airline.vim
 
 " make sure background stays transparent after initial nvim open
-" hi! Normal guibg=NONE ctermbg=NONE
-" hi! EndOfBuffer guibg=NONE ctermbg=NONE
-
+hi! Normal guibg=NONE ctermbg=NONE
+hi! EndOfBuffer guibg=NONE ctermbg=NONE

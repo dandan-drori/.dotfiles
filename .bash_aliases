@@ -16,7 +16,6 @@ alias cperez='cat ~/customStartupScripts/erez-zoom.txt | xclip -selection clipbo
 alias bashrc='nvim ~/.bashrc' 
 alias aliases='nvim ~/.bash_aliases' 
 alias ninit='nvim ~/.config/nvim/init.vim'
-alias mdindex='nvim ~/vimwiki/index.md'
 
 # npm / yarn scripts
 alias start='yarn start'
@@ -43,3 +42,4 @@ alias createMd='mdCreate.sh'
 alias deleteMd='mdDelete.py'
 alias md2pdf='md2pdf.py'
 alias opdf='opdf.py'
+alias notes='noteTaking.sh'
