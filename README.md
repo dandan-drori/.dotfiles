@@ -7,6 +7,8 @@ Bashrc and Vimrc config files
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
+- [Software List](#software-list)
+- [Vim Keyboard Shortcuts](#vim-keyboard-shortcuts)
 
 ## General Info
 
@@ -32,22 +34,31 @@ $ git clone <repo-url>
 
 ## Software List
 
-- Brave
-- Blender
+### Programming
+
+- Vim
+- Node + Npm + Yarn
+- Pip
 - VS-Code
-- htop
+- Android Studio
+- Postman
+- Intellij + JDK + Ant
+- Unity
+
+### Utilities
+
+- Brave
+- Figma
+- Zoom
+- Blender
 - OnlyOffice
 - Mailspring
-- ranger
-- Unity
-- Node + Npm
-- Yarn
-- Postman
-- Zoom
-- Android Studio
-- Figma
+- Spotify
+- Htop
+- Ranger
+- Timeshift
 
-## Vim/Nvim Keyboard Shortcuts
+## Vim Keyboard Shortcuts
 
 ### Basic Shortcuts
 
@@ -55,7 +66,7 @@ $ git clone <repo-url>
 - ctrl + r - redo last change
 - dd - delete current line
 - D - delete till end of line
-- yy - yank/copy current line 
+- yy - yank/copy current line
 - y$ - copy till end of line to avoid copying carrige return
 - p - paste from the unnamed register on line below
 - P - paste from unnamed register on line above
@@ -70,7 +81,7 @@ $ git clone <repo-url>
 - /\<text\> - search current buffer for \<text\> going forward
 - ?\<text\> - search current buffer for \<text\> going backward
 - r\<char\> - replace character under cursor with \<char\>
-- gt - go to next tab 
+- gt - go to next tab
 - gT - go to previous tab
 - ctrl+w+w - switch between panes in split screen
 - gf - go to file in path under cursor
@@ -91,12 +102,12 @@ $ git clone <repo-url>
 - gUU - make current line uppercase
 - guu - make current line lowercase
 - Macros are awesome:
-	- q\<char\> - start recording a macro in the \<char\> register
-	- q\<char\> - start recording a macro in the \<char\> register
-	- @\<char\> - execute a macro in the \<char\> register
-	- Pro tip: use general commands with macros like ciw and not cw to avoid problems
+  - q\<char\> - start recording a macro in the \<char\> register
+  - q\<char\> - start recording a macro in the \<char\> register
+  - @\<char\> - execute a macro in the \<char\> register
+  - Pro tip: use general commands with macros like ciw and not cw to avoid problems
 
-### Commands 
+### Commands
 
 - . - repeat last noraml mode command
 - :\<linenumber\> - go to line \<linenumber\>

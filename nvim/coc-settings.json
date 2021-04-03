@@ -17,6 +17,15 @@
 
   "javascript.suggest.autoImports": true,
 
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "java.codeGeneration.generateComments": true,
+  "java.completion.guessMethodArguments": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.signatureHelp.enabled": true,
+  "java.format.enabled": true, 
+  "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar",
+
+
   "coc.preferences.hoverTarget": "float",
 
   "snippets.userSnippetsDirectory": "~/.config/nvim/snips",
@@ -24,5 +33,6 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "clangd.path": "/home/dandan/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd"
+  "clangd.path": "/home/dandan/.config/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
+  "java.format.settings.url": "/home/dandan/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
 }

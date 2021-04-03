@@ -23,6 +23,7 @@ source $HOME/.config/nvim/plugin-configurations/vim-wiki.vim
 source $HOME/.config/nvim/plugin-configurations/which-key.vim
 source $HOME/.config/nvim/plugin-configurations/vim-repeat.vim
 source $HOME/.config/nvim/plugin-configurations/airline.vim
+source $HOME/.config/nvim/plugin-configurations/tagalong.vim
 
 " make sure background stays transparent after initial nvim open
 hi! Normal guibg=NONE ctermbg=NONE

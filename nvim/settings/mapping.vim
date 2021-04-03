@@ -111,8 +111,6 @@ map <leader>C :w! \| !~/bin/md2pdf.py <c-r>%<CR><CR>
 map <leader>O :!~/bin/opdf.py <c-r>%<CR>
 " delete the correct pdf for the currently open md file
 map <leader>D :!~/bin/mdDelete.py <c-r>%<CR>
-" open buffer for note taking
-map <leader>N :!~/bin/noteTaking.sh \| nvim /home/dandan/.notes/src/note-<C-R>=expand(@a).'.md'<CR>
 
 " navigating buffers like tabs with airline's tabline extension
 nnoremap <leader>l :bnext<CR>
@@ -134,6 +132,10 @@ vnoremap <leader>c "*Y :let @+=@*<CR>
 
 " paste from system clipboard
 map <leader>p "+p
+
+nnoremap <leader>: :g/)$/norm! A;<CR>
+
+nnoremap <leader>cc :exe 'norm i' . system("changeCase.py <c-r><c-w>") \| norm! xdwkJb<CR>
 
 " FILETYPE SPECIFIC MAPPINGS
 

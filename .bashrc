@@ -59,8 +59,9 @@ fi
 
 # prompt configurations with git
 parse_git_branch() {
- git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
+
 if [ "$color_prompt" = yes ]; then
  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u:\033[00m\]\[\033[01;34m\]\w\[\033[01;31m\] $(parse_git_branch)\[\033[00m\]\$ '
 else
@@ -136,11 +137,29 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+# add jdk (java development kit) to path
+export JAVA_HOME=/usr/lib/jvm/jdk-15.0.2
+export PATH=$PATH:/usr/lib/jvm/jdk-15.0.2/bin
+
+# ant home for ant (java)
+export ANT_HOME=/home/dandan/Installed\ Programs/apache-ant-1.10.9-bin
+
+# add ant to path (java)
+export PATH=$PATH:/home/dandan/Installed\ Programs/apache-ant-1.10.9-bin/bin
+
+# add pup to path (tuxi - assistant)
+export PATH=$PATH:/home/dandan/Installed\ Programs/Pup/pup_v0.4.0_linux_amd64
+
+# add Intellij to path
+export PATH=$PATH:/home/dandan/Installed\ Programs/ideaIC-2020.3.3/idea-IC-203.7717.56/bin
 
 export VIMRUNTIME="$HOME/.config/nvim/runtime"
 export VIM="$HOME/.config/nvim/"
-export EDITOR=$VIM/nvim
+export EDITOR="nvim"
+
+# for dmenu
+export LC_ALL=en_US.utf8
 
 # fzf default command
 export FZF_DEFAULT_COMMAND="rg --files"
@@ -153,12 +172,12 @@ stty ixoff -ixon
 # fd - cd to selected directory
 fd() {
   local dir
-  dir=$(find ${1:-.} \( -path '*/\.*' -o -name node_modules -o -name snap -o -name generated -o -name intermediates -o -name Android -o -name android-studio -o -name a.out \) -prune \
+  dir=$(find ${1:-.} \( -path '*/\.*' -o -name node_modules -o -name snap -o -name Unity-2019.1.0f2 -o -name Installed\ Programs -o -name Library -o -name generated -o -name intermediates -o -name Android -o -name android-studio -o -name a.out \) -prune \
     -o -type d -print 2> /dev/null | fzf +m --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}") &&
   cd "$dir"
 }
 
-# cdf - cd into the directory of the selected file
+# ff - cd into the directory of the selected file
 ff() {
    local file
    local dir
@@ -171,6 +190,20 @@ fif() {
   rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 
+# get path of file
+gfp() {
+  # pipe results of find for files through fzf, remove './' from the beginning of the match,
+  # remove the '\n' from the end of the match, and finaly copy selection to clipboard.
+  find $HOME -type f | fzf | sed 's/^..//g' | tr -d '\n' | xclip -selection c
+}
+
+# send file
+sf() {
+  file=$(find $HOME -type f | fzf | tr -d '\n')
+  curl -F "file=@$file" 0x0.st | xclip -selection c
+  notify-send 'Link copied to clipboard'
+}
+
 # define fzf source
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -181,12 +214,18 @@ export PATH=$PATH":$HOME/bin"
 shopt -s autocd
 
 # add chromedriver path to PATH
-# used by python for web automation
+# used by python (selenium) for web automation
 export PATH=$PATH":/usr/bin/google-chrome"
 
 # set vi emulation in bash
 # currently commented out on purpose
 # set -o vi
+
+##################################################################################
+## previous terminal font - "Monospace regular"                                 ##
+## current terminal font - source code pro for powerline semibold               ##
+## was changed due to unattractive lines appearing in the bash prompt           ##
+##################################################################################
 
 bash_prompt_command() {
 	# How many characters of the $PWD should be kept
@@ -202,7 +241,7 @@ bash_prompt_command() {
 	pwdmaxlen=$(( ( pwdmaxlen < ${#dir} ) ? ${#dir} : pwdmaxlen ))
 
 	NEW_PWD=${PWD/#$HOME/\~}
-	
+
 	local pwdoffset=$(( ${#NEW_PWD} - pwdmaxlen ))
 
 	# Generate name
@@ -246,7 +285,7 @@ bash_prompt() {
 	## COLOR CODES                                                            ##
 	## These can be used in the configuration below                           ##
 	############################################################################
-	
+
 	## FONT EFFECT
 	local      NONE='0'
 	local      BOLD='1'
@@ -255,7 +294,7 @@ bash_prompt() {
 	local     BLINK='5'
 	local    INVERT='7'
 	local    HIDDEN='8'
-	
+
 	## COLORS
 	local   DEFAULT='9'
 	local     BLACK='0'
@@ -274,13 +313,13 @@ bash_prompt() {
 	local L_MAGENTA='65'
 	local    L_CYAN='66'
 	local     WHITE='67'
-	
+
 	## TYPE
 	local     RESET='0'
 	local    EFFECT='0'
 	local     COLOR='30'
 	local        BG='40'
-	
+
 	## 256 COLOR CODES
 	local NO_FORMAT="\[\033[0m\]"
 	local ORANGE_BOLD="\[\033[1;38;5;208m\]"
@@ -291,13 +330,13 @@ bash_prompt() {
 	local WHITE_BOLD="\[\033[1;38;5;15m\]"
 	local GRAY_BOLD="\[\033[1;90m\]"
 	local BLUE_BOLD="\[\033[1;38;5;74m\]"
-	
-	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+
+	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 	  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## 
-	
+	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+
 	##                          CONFIGURE HERE                                ##
-	
+
 	############################################################################
 	## CONFIGURATION                                                          ##
 	## Choose your color combination here                                     ##
@@ -305,30 +344,30 @@ bash_prompt() {
 	local FONT_COLOR_1=$WHITE
 	local BACKGROUND_1=$BLUE
 	local TEXTEFFECT_1=$BOLD
-	
+
 	local FONT_COLOR_2=$WHITE
 	local BACKGROUND_2=$L_BLUE
 	local TEXTEFFECT_2=$BOLD
-	
+
 	local FONT_COLOR_3=$D_GRAY
 	local BACKGROUND_3=$WHITE
 	local TEXTEFFECT_3=$BOLD
-	
+
 	local PROMT_FORMAT=$BLUE_BOLD
-	
+
 	############################################################################
 	## EXAMPLE CONFIGURATIONS                                                 ##
 	## I use them for different hosts. Test them out ;)                       ##
 	############################################################################
-	
-	## CONFIGURATION: BLACK-RED
+
+    ## CONFIGURATION: BLACK-RED (current)
 	# if [ "$HOSTNAME" = giraff6 ]; then
 		FONT_COLOR_1=$WHITE; BACKGROUND_1=$BLACK; TEXTEFFECT_1=$BOLD
 		FONT_COLOR_2=$WHITE; BACKGROUND_2=$D_GRAY; TEXTEFFECT_2=$BOLD
 		FONT_COLOR_3=$WHITE; BACKGROUND_3=$RED; TEXTEFFECT_3=$BOLD
 		PROMT_FORMAT=$BLUE_BOLD
 	# fi
-	
+
 	## CONFIGURATION: GRAY-SCALE
 	if [ "$HOSTNAME" = giraff ]; then
 		FONT_COLOR_1=$WHITE; BACKGROUND_1=$BLACK; TEXTEFFECT_1=$BOLD
@@ -336,29 +375,29 @@ bash_prompt() {
 		FONT_COLOR_3=$WHITE; BACKGROUND_3=$L_GRAY; TEXTEFFECT_3=$BOLD
 		PROMT_FORMAT=$BLACK_BOLD
 	fi
-	
-	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+
+	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 	  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## 	
-	
+	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+
 	############################################################################
 	## TEXT FORMATING                                                         ##
 	## Generate the text formating according to configuration                 ##
 	############################################################################
-	
+
 	## CONVERT CODES: add offset
 	FC1=$(($FONT_COLOR_1+$COLOR))
 	BG1=$(($BACKGROUND_1+$BG))
 	FE1=$(($TEXTEFFECT_1+$EFFECT))
-	
+
 	FC2=$(($FONT_COLOR_2+$COLOR))
 	BG2=$(($BACKGROUND_2+$BG))
 	FE2=$(($TEXTEFFECT_2+$EFFECT))
-	
+
 	FC3=$(($FONT_COLOR_3+$COLOR))
 	BG3=$(($BACKGROUND_3+$BG))
 	FE3=$(($TEXTEFFECT_3+$EFFECT))
-	
+
 	FC4=$(($FONT_COLOR_4+$COLOR))
 	BG4=$(($BACKGROUND_4+$BG))
 	FE4=$(($TEXTEFFECT_4+$EFFECT))
@@ -367,31 +406,30 @@ bash_prompt() {
 	local TEXT_FORMAT_1
 	local TEXT_FORMAT_2
 	local TEXT_FORMAT_3
-	local TEXT_FORMAT_4	
+	local TEXT_FORMAT_4
 	format_font TEXT_FORMAT_1 $FE1 $FC1 $BG1
 	format_font TEXT_FORMAT_2 $FE2 $FC2 $BG2
 	format_font TEXT_FORMAT_3 $FC3 $FE3 $BG3
 	format_font TEXT_FORMAT_4 $FC4 $FE4 $BG4
-	
+
 	# GENERATE PROMT SECTIONS
 	local PROMT_USER=$"$TEXT_FORMAT_1 \u "
-	local PROMT_HOST=$'$TEXT_FORMAT_2 $(parse_git_branch) '
-    local PROMT_PWD=$"$TEXT_FORMAT_3 \${NEW_PWD} "	
+	local PROMT_HOST=$'$TEXT_FORMAT_2 \[\033[1;38;5;15m\]$(parse_git_branch) '
+    local PROMT_PWD=$"$TEXT_FORMAT_3 \${NEW_PWD} "
 	local PROMT_INPUT=$"$PROMT_FORMAT "
-
 	############################################################################
 	## SEPARATOR FORMATING                                                    ##
 	## Generate the separators between sections                               ##
 	## Uses background colors of the sections                                 ##
 	############################################################################
-	
+
 	## CONVERT CODES
 	TSFC1=$(($BACKGROUND_1+$COLOR))
 	TSBG1=$(($BACKGROUND_2+$BG))
-	
+
 	TSFC2=$(($BACKGROUND_2+$COLOR))
 	TSBG2=$(($BACKGROUND_3+$BG))
-	
+
 	TSFC3=$(($BACKGROUND_3+$COLOR))
 	TSBG3=$(($DEFAULT+$BG))
 
@@ -404,7 +442,7 @@ bash_prompt() {
 	format_font SEPARATOR_FORMAT_3 $TSFC3 $TSBG3
 
 	# GENERATE SEPARATORS WITH FANCY TRIANGLE
-	local TRIANGLE=$'\uE0B0'	
+	local TRIANGLE=$'\uE0B0'
 	local SEPARATOR_1=$SEPARATOR_FORMAT_1$TRIANGLE
 	local SEPARATOR_2=$SEPARATOR_FORMAT_2$TRIANGLE
 	local SEPARATOR_3=$SEPARATOR_FORMAT_3$TRIANGLE
@@ -436,16 +474,16 @@ bash_prompt() {
 ##  MAIN                                                                      ##
 ################################################################################
 
-##	Bash provides an environment variable called PROMPT_COMMAND. 
-##	The contents of this variable are executed as a regular Bash command 
-##	just before Bash displays a prompt. 
+##	Bash provides an environment variable called PROMPT_COMMAND.
+##	The contents of this variable are executed as a regular Bash command
+##	just before Bash displays a prompt.
 ##	We want it to call our own command to truncate PWD and store it in NEW_PWD
 PROMPT_COMMAND=bash_prompt_command
 
 ##	Call bash_promnt only once, then unset it (not needed any more)
-##	It will set $PS1 with colors and relative to $NEW_PWD, 
+##	It will set $PS1 with colors and relative to $NEW_PWD,
 ##	which gets updated by $PROMT_COMMAND on behalf of the terminal
 bash_prompt
 unset bash_prompt
 
-### EOF ###O
+### EOF ###

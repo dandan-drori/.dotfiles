@@ -34,3 +34,5 @@ nnoremap <leader>d<space> :call vimspector#Continue()<CR>
 nmap <leader>drc <Plug>VimspectorRunToCursor
 nmap <leader>dtb <Plug>VimspectorToggleBreakpoint
 nmap <leader>dtcb <Plug>VimspectorToggleConditionalBreakpoint
+
+let g:vimspector_base_dir = expand('$HOME/.config/vimspector-config')
